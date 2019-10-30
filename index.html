@@ -15,14 +15,19 @@
 <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js"></script>
-<!-- CSS -->
+<!-- FONT AWESOME -->
+    <script
+     src="https://kit.fontawesome.com/4d58f93612.js"
+     crossorigin="anonymous"
+   ></script>
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     
 </head>
 
 <body>
   <div class="jumbotron alert alert-info text-center">
-    <h1 class="text-center">Train Schedule</h1>
+    <h1 class="text-center"><i class="fas fa-subway"></i>  Train Schedule</h1>
     <p>Get on the train, but watch your fingers!</p>
     <hr class="my-4" />
   </div>
@@ -30,8 +35,8 @@
   <div class="container">
     <div class="row">
       <div class="card col-12">
-        <div class="card-header">
-          Current Train Schedule
+        <div class="card-header"><i class="fas fa-train"></i>
+            Current Train Schedule
         </div>
         <table class="table">
           <thead>
@@ -41,7 +46,7 @@
               <th scope="col" class="frequency">Frequency (min)</th>
               <th scope="col" class="next-arrival">Next Arrival</th>
               <th scope="col" class="minutes-away">Minutes Away</th>
-              //unsure where to put this right now...
+              <!-- unsure where to put this right now... -->
               <th scope="col" class="first-train-time">1st train time</th>
              
             </tr>
@@ -65,8 +70,8 @@
   <div class="container">
     <div class="row">
       <div class="card col-12">
-        <div class="card-header">
-          Add Train
+        <div class="card-header"><i class="fas fa-caret-square-right"></i>
+            Add Train
         </div>
         <form role="form">
           <div class="form-group">
