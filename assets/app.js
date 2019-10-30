@@ -38,11 +38,11 @@ $("#add-train").on("click", function() {
   firebase
     .database()
     .ref()
-    .on("value", function(snapshot) {
-      trainName: trainName;
-      destination: destination;
-      firstTrainTime: firstTrainTime;
-      frequencyMinutes: frequencyMinutes;
+    .set({
+      trainName: trainName,
+      destination: destination,
+      firstTrainTime: firstTrainTime,
+      frequencyMinutes: frequencyMinutes
     });
 });
 
