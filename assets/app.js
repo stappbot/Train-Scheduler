@@ -52,16 +52,17 @@ firebase
   .database()
   .ref()
   .on("child_added", function(snapshot) {
-    console.log(snapshot.val());
-    //below is not working
-    // let train1 = snapshot.trainName;
-    // let destination1 = snapshot.destination;
-    // let frequency1 = snapshot.frequencyMinutes;
-    // let firstTrain1 = snapshot.firstTrainTime;
-    // console.log(train1);
-    // console.log(destination1);
-    // console.log(frequency1);
-    // console.log(firstTrain1);
+    let data = snapshot.val();
+    console.log(data);
+    //collect inputs into variables
+    let train1 = data.trainName;
+    let destination1 = data.destination;
+    let frequency1 = data.frequencyMinutes;
+    let firstTrain1 = data.firstTrainTime;
+    console.log(train1);
+    console.log(destination1);
+    console.log(frequency1);
+    console.log(firstTrain1);
 
     // $("#trainInput").html(snapshot.val().trainName);
     // $("#destinationInput").html(snapshot.val().destination);
