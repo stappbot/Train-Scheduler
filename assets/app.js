@@ -54,20 +54,41 @@ firebase
   .on("child_added", function(snapshot) {
     let data = snapshot.val();
     console.log(data);
-    //collect inputs into variables
-    let train1 = data.trainName;
-    let destination1 = data.destination;
-    let frequency1 = data.frequencyMinutes;
-    let firstTrain1 = data.firstTrainTime;
-    console.log(train1);
-    console.log(destination1);
-    console.log(frequency1);
-    console.log(firstTrain1);
 
-    // $("#trainInput").html(snapshot.val().trainName);
-    // $("#destinationInput").html(snapshot.val().destination);
-    // $("#firstTrainTimeInput").html(snapshot.val().firstTrainTime);
-    // $("#frequencyInput").html(snapshot.val().frequencyMinutes);
+    for (let i = 0; i < data.length; i++) {
+      //collect inputs into variables
+      let train1 = data.trainName;
+      let destination1 = data.destination;
+      let frequency1 = data.frequencyMinutes;
+      let firstTrain1 = data.firstTrainTime;
+
+      console.log(train1);
+      console.log(destination1);
+      console.log(frequency1);
+      console.log(firstTrain1);
+
+      //make a new table row
+      //$("#new-table tr").each(function() {
+      var trainRow = $("<tr>");
+
+      //make a new column
+      trainRow.append("<td>");
+
+      //give it a set of values for the row
+      trainRow.attr("src", train1);
+      trainRow.attr("src", destination1);
+      trainRow.attr("src", frequency1);
+      trainRow.attr("src", firstTrain1);
+      console.log(trainRow);
+
+      //append <tr> and <td> to <tbody>
+      $("#new-table tr").append(trainRow);
+      //});
+      // $("#trainInput").html(snapshot.val().trainName);
+      // $("#destinationInput").html(snapshot.val().destination);
+      // $("#firstTrainTimeInput").html(snapshot.val().firstTrainTime);
+      // $("#frequencyInput").html(snapshot.val().frequencyMinutes);
+    }
   });
 
 // moment.js
