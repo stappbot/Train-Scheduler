@@ -41,10 +41,10 @@ $("#add-train").on("click", function(event) {
     .database()
     .ref()
     .push({
-      trainName: trainName,
-      destination: destination,
-      firstTrainTime: firstTrainTime,
-      frequencyMinutes: frequencyMinutes
+      trainName,
+      destination,
+      firstTrainTime,
+      frequencyMinutes
     });
 });
 
