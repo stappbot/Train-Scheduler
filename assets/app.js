@@ -31,11 +31,9 @@ $("#add-train").on("click", function(event) {
   event.preventDefault();
   const trainName = getTrimmedValue("#trainInput");
   const destination = getTrimmedValue("#destinationInput");
-  const firstTrainTime = getTrimmedValue("#firstTrainTimeInput");
-  const frequencyMinutes = getTrimmedValue("#frequencyInput");
-
-  //next arrival and minutes away are to be calculated elsewhere
-
+  let firstTrainTime = getTrimmedValue("#firstTrainTimeInput");
+  let frequencyMinutes = getTrimmedValue("#frequencyInput");
+  console.log(firstTrainTime);
   //event listener
   firebase
     .database()
@@ -46,8 +44,40 @@ $("#add-train").on("click", function(event) {
       firstTrainTime,
       frequencyMinutes
     });
+
+  //moment.js-calculate times
+
+  const currentTime = moment().format("HH:mm");
+
+  const cHours = currentTime.split(":");
+  console.log(cHours);
+
+  console.log(currentTime);
+
+  // moment coding for the game:
+  console.log(firstTrainTime);
+  let firstTrain = moment(firstTrainTime, "HH:mm").format("HH:mm");
+  console.log(firstTrain);
+  const fHours = firstTrain.split(":");
+  console.log(fHours);
+  //.subtract
+  const currentMinusFirstTrainTime = moment(currentTime).diff(
+    moment(firstTrain)
+  );
+  console.log(currentMinusFirstTrainTime);
+
+  const fMinutes = moment(frequencyMinutes).format("mm");
+  console.log(fMinutes);
+  const timeLeft = currentMinusFirstTrainTime % frequencyMinutes;
+
+  // minutes away value
+  minutesAway = frequencyMinutes - timeLeft;
+
+  //next train time
+  nextArrival = minutesAway + currentTime;
 });
 
+//add child to firebase
 firebase
   .database()
   .ref()
@@ -68,10 +98,19 @@ firebase
     $newTable.append(row);
   });
 
-// moment.js
-// const diffBetweenCurrentTimeAndFirstTrainTime = currentTime - firstTrainTime
-// const timeRemainder = diffBetweenCurrentTimeAndFirstTrainTime % trainFrequency
-// // this is your minutes away value
-// const minutesAway = trainFrequency - timeRemainder
-// // next train time
-// const nextTrainTime = minutesAway + currentTime
+// //moment.js-calculate times
+// const currentTime = moment().format("HH:mm");
+// console.log(currentTime);
+
+// // moment coding for the game:
+// let firstTrain = moment(firstTrainTime).format("HH:mm");
+// const currentMinusFirstTrainTime = currentTime - firstTrain;
+// console.log(currentMinusFirstTrainTime);
+
+// const timeLeft = currentMinusFirstTrainTime % frequencyMinutes;
+
+// // minutes away value
+// minutesAway = frequencyMinutes - timeLeft;
+
+// //next train time
+// nextArrival = minutesAway + currentTime;
